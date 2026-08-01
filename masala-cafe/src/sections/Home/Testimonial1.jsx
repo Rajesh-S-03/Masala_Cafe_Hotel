@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/Testimonial.css";
+import "../../styles/testimonial.css";
 
 import { FaStar, FaQuoteLeft } from "react-icons/fa";
 
