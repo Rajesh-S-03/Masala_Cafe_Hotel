@@ -8,7 +8,7 @@ import leafLeft from "../../assets/banana-bottom.png";
 import chicken from "../../assets/mansattisoru.png";
 import mutton from "../../assets/mutton.png";
 import chickenGravy from "../../assets/chickengravy.png";
-import Mcspecial from "./mcspecial";
+import Mcspecial from "./Mcspecial";
 
 const weekendDishes = [
   {
