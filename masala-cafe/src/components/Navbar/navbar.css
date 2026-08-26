@@ -1,0 +1,647 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:96px;
+
+    padding:0 50px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:transparent;
+    transition:.45s ease;
+
+    z-index:999;
+
+    animation:navDown .9s ease;
+}
+
+/* Scroll — only now does it need a backing so text stays readable over other sections */
+
+.navbar.active{
+
+    height:80px;
+
+    background:rgba(13,7,5,.85);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+   LOGO — sits plain, no card
+=========================== */
+
+.logo{
+
+    display:flex;
+    align-items:center;
+    gap:5px;
+    cursor:pointer;
+    height:70px;
+
+}
+
+.logo img{
+
+    width:170px;
+    height:115px;
+    margin-top: 35px;
+    margin-left: -40px;
+
+    border-radius:50%;
+
+    transition:.45s;
+
+    animation:logoRotate 1.2s ease;
+
+}
+
+.logo-text{
+
+    display:flex;
+    flex-direction:column;
+    margin-top: 20px;
+
+}
+
+.logo-text h2{
+
+    color:#fff;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    line-height:1;
+
+}
+
+.logo-text span{
+
+    color:#D4AF37;
+
+    font-size:.9rem;
+
+    letter-spacing:2px;
+
+    margin-top:8px;
+
+}
+
+/* ===========================
+   NAV LINKS — the pill capsule
+=========================== */
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:38px;
+
+    list-style:none;
+
+    padding:14px 36px;
+
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-radius:50px;
+
+}
+
+.nav-links a,
+.nav-link-btn{
+
+    position:relative;
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    background:transparent;
+
+    border:none;
+    outline:none;
+
+    margin:0;
+    padding:0;
+
+    color:#fff;
+
+    font-family:"Poppins",sans-serif;
+    font-size:1rem;
+    font-weight:500;
+    line-height:1.2;
+
+    vertical-align:middle;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.nav-links a::after,
+.nav-link-btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0;
+    height:2px;
+
+    background:#D4AF37;
+
+    transition:.4s ease;
+
+}
+
+.nav-links a:hover,
+.nav-link-btn:hover{
+
+    color:#D4AF37;
+
+}
+
+.nav-links a:hover::after,
+.nav-link-btn:hover::after{
+
+    width:100%;
+
+}
+
+
+
+.nav-link-btn:focus,
+.nav-link-btn:active{
+
+    outline:none;
+
+    background:transparent;
+
+    box-shadow:none;
+
+    color:#fff;
+
+}
+
+.nav-link-btn:focus::after,
+.nav-link-btn:active::after{
+
+    width:0;
+
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.order-btn{
+
+    padding:14px 24px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#D4AF37,#FF8C00);
+
+    color:#fff;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 6px 16px rgba(212,175,55,.2);
+
+}
+
+.order-btn:hover{
+
+    transform:translateY(-3px) scale(1.04);
+
+    box-shadow:0 14px 28px rgba(255,140,0,.4);
+
+}
+
+.order-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    z-index: 2000;
+
+    animation: orderFade .25s ease;
+}
+
+.order-card {
+    position: relative;
+
+    width: 420px;
+    max-width: calc(100% - 40px);
+
+    padding: 35px;
+
+    background: #1B120D;
+
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 24px;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+
+    text-align: center;
+
+    animation: orderPopup .3s ease;
+}
+
+.order-card h2 {
+    margin: 0;
+
+    color: #fff;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 1.4rem;
+}
+
+.order-card p {
+    margin: 8px 0 25px;
+
+    color: #aaa;
+
+    font-size: .9rem;
+}
+
+
+/* CLOSE BUTTON */
+
+.order-close {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.08);
+
+    color: #fff;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.order-close:hover {
+    background: #D4AF37;
+    transform: rotate(90deg);
+}
+
+
+/* OPTIONS */
+
+.order-options {
+    display: flex;
+    gap: 15px;
+}
+
+.order-option {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 22px 15px;
+
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.05);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.order-option:hover {
+    transform: translateY(-5px);
+
+    border-color: #D4AF37;
+
+    background: rgba(212,175,55,.1);
+
+    box-shadow: 0 10px 25px rgba(212,175,55,.15);
+}
+
+.order-icon {
+    font-size: 2rem;
+}
+
+.order-option strong {
+    display: block;
+
+    color: #D4AF37;
+
+    font-size: 1rem;
+}
+
+.order-option small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #aaa;
+
+    font-size: .72rem;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes orderFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes orderPopup {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .order-card {
+        padding: 30px 20px;
+    }
+
+    .order-options {
+        flex-direction: column;
+    }
+
+    .order-option {
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+}
+
+/* ==========================
+   HAMBURGER
+========================== */
+
+.hamburger{
+    display:none;
+    width:35px;
+    cursor:pointer;
+    z-index:1001;
+}
+
+.hamburger span{
+    display:block;
+    height:3px;
+    background:#fff;
+    margin:6px 0;
+    transition:.35s;
+    border-radius:20px;
+}
+
+.hamburger.open span:nth-child(1){
+    transform:rotate(45deg) translate(7px,6px);
+}
+
+.hamburger.open span:nth-child(2){
+    opacity:0;
+}
+
+.hamburger.open span:nth-child(3){
+    transform:rotate(-45deg) translate(7px,-6px);
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+@keyframes navDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes logoRotate{
+
+    from{
+
+        transform:scale(.3) rotate(-180deg);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1) rotate(0);
+
+        opacity:1;
+
+    }
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 992px) {
+
+    .navbar {
+        height: 75px;
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* =========================
+       LOGO - FIRST
+    ========================= */
+
+    .logo {
+        order: 1;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        height: 65px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .logo img {
+        width: 58px;
+        height: 58px;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .logo-text {
+        margin-top: 0;
+        min-width: 0;
+    }
+
+    .logo-text h2 {
+        font-size: 1.25rem;
+        white-space: nowrap;
+        margin: 0;
+    }
+
+    .logo-text span {
+        font-size: 0.68rem;
+        letter-spacing: 0.3px;
+        white-space: nowrap;
+        margin-top: 5px;
+    }
+
+
+    /* =========================
+       ORDER BUTTON - SECOND
+    ========================= */
+
+    .order-btn {
+        order: 2;
+
+        padding: 10px 15px;
+        margin-left: 8px;
+
+        font-size: 0.82rem;
+        white-space: nowrap;
+
+        flex-shrink: 0;
+    }
+
+
+    /* =========================
+       HAMBURGER - THIRD
+    ========================= */
+
+    .hamburger {
+        order: 3;
+
+        display: block;
+        width: 34px;
+        margin-left: 10px;
+
+        flex-shrink: 0;
+    }
+
+    .hamburger span {
+        height: 3px;
+        margin: 5px 0;
+    }
+
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
+
+    .nav-links {
+        position: absolute;
+
+        top: 75px;
+        left: 0;
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 25px;
+
+        padding: 35px 0;
+
+        background: #1B120D;
+
+        border: none;
+        border-radius: 0;
+
+        transform: translateY(-150%);
+        opacity: 0;
+        visibility: hidden;
+
+        transition: 0.4s ease;
+    }
+
+    .nav-links.show {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
